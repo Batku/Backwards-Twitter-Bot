@@ -40,7 +40,7 @@ while True:
             print(tweet.id)
             oTweet = tweet.text
             nTweet= mirrorText(oTweet)          #get mirrored text (without @s)
-            api.update_status(f'@{username} {nTweet}', tweet.id) #tweet it out (the @{username} is there to make it a reply)
+            api.update_status(status=f'@{username} {nTweet}', in_reply_to_status_id = tweet.id) #tweet it out (the @{username} is there to make it a reply)
             print(f'''
 TWEETED
 original tweet = "{oTweet}"" || new tweet = "{nTweet}"''')  #print out the tweet (for log)
