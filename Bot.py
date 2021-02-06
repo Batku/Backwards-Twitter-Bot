@@ -33,7 +33,7 @@ checkNewTweet = api.user_timeline(screen_name=str(username),since_id = str(lastI
 while True:
     timeNow = time.strftime('%H:%M:%S', time.localtime())       #update time (only used for debugging)
     print(f'time = {timeNow}')                                  #show time (only used for debugging)
-    CheckNewTweet = api.user_timeline(screen_name=str(username),since_id = str(lastID))     #update CheckNewTweet
+    checkNewTweet = api.user_timeline(screen_name=str(username),since_id = str(lastID))     #update CheckNewTweet
     
     for tweet in checkNewTweet:               #check for new Tweet
         if tweet.text.startswith('RT @') == False:      #check if it's just a retweet (not quote retweet)
