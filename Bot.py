@@ -14,11 +14,12 @@ i = 0
 def mirrorText(oTweet):
 
     bruh = ' '.join(word for word in oTweet.split() if word[0]!='@')                            #remove @s (if the user replies to someone the tweet is "@user 'tweet'" and without this your tweet will include the "resu@" at the end)
-    bruh = ' '.join([term for term in bruh.split() if not term.startswith("https://t.co/")])    #remove links of images, videos and quote retweets
-    newTweet = str(bruh[::-1])                                                                       #mirror the rest of the text
-
-
-
+    bruh = ' '.join([term for term in bruh.split() if not term.startswith("https://t.co/")])    #remove links of images, videos and quote retweets                                                                  #mirror the rest of the text
+    html_entities = {"&lt;": "<", "&gt;": ">", "&amp;": "&", "&quot;": "\"", "&apos;": "\'", "&cent;": "¢", "&pound;": "£", "&yen;": "¥", "&euro;": "€", "&copy;": "©", "&reg;": "®"}
+    for entity in html_entities:
+        if entity in bruh:
+            bruh = bruh.replace(entity, html_entities.get(entity))
+    newTweet = str(bruh[::-1])  
     return newTweet
 
 checkNewTweet = api.user_timeline(screen_name=username,since_id = str(lastID))
