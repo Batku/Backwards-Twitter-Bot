@@ -6,7 +6,7 @@ auth.set_access_token('access_token', 'access_token_secret')
 
 api = tweepy.API(auth)
 
-lastID = '0'
+lastID = '1342248742263656449'
 
 username = ''   #username of the user you're checking the tweets of
 
